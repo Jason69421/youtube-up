@@ -29,7 +29,7 @@ RETRIABLE_EXCEPTIONS = (httplib2.HttpLib2Error, IOError, httplib.NotConnected,
 RETRIABLE_STATUS_CODES = [500, 502, 503, 504]
 
 #CLIENT_SECRETS_FILE = input('Enter your client credential secret file path:\n')
-CLIENT_SECRETS_FILE = '/content/client_secrets.json'
+CLIENT_SECRETS_FILE = '/content/client-secrets.json'
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
 API_SERVICE_NAME = 'youtube'
@@ -80,7 +80,7 @@ def resumable_upload(request):
       status, response = request.next_chunk()
       if response is not None:
         if 'id' in response:
-          print ('Video id "%s" was successfully uploaded.') % response['id']
+          print (f'Video id "%s" was successfully uploaded.' % response['id'])
         else:
           exit('The upload failed with an unexpected response: %s' % response)
     except HttpError as e:
@@ -100,7 +100,7 @@ def resumable_upload(request):
 
       max_sleep = 2 ** retry
       sleep_seconds = random.random() * max_sleep
-      print ('Sleeping %f seconds and then retrying...') % sleep_seconds
+      print ('Sleeping %f seconds and then retrying...' % sleep_seconds)
       time.sleep(sleep_seconds)
 
 if __name__ == '__main__':

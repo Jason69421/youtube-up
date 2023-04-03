@@ -29,7 +29,7 @@ RETRIABLE_EXCEPTIONS = (httplib2.HttpLib2Error, IOError, httplib.NotConnected,
 RETRIABLE_STATUS_CODES = [500, 502, 503, 504]
 
 #CLIENT_SECRETS_FILE = input('Enter your client credential secret file path:\n')
-CLIENT_SECRETS_FILE = '/content/client_secrets.json'
+CLIENT_SECRETS_FILE = '/kaggle/working/client_secrets.json'
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
 API_SERVICE_NAME = 'youtube'
@@ -107,7 +107,7 @@ if __name__ == '__main__':
   youtube = get_authenticated_service()
 
   #MEDIA_FOLDER_PATH = input('Enter VIDEOS FOLDER PATH you wish to upload:\n')
-  MEDIA_FOLDER_PATH = '/content'
+  MEDIA_FOLDER_PATH = '/kaggle/temp'
   for video_file in glob.glob(os.path.join(MEDIA_FOLDER_PATH, '*.*')):
     mimetypes.init()
     mimestart = mimetypes.guess_type(video_file)[0]

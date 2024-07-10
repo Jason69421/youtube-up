@@ -40,9 +40,9 @@ VALID_PRIVACY_STATUSES = ('public', 'private', 'unlisted')
 
 # Authorize the request and store authorization credentials.
 def get_authenticated_service():
-  flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-  credentials = flow.run_console()
-  return build(API_SERVICE_NAME, API_VERSION, credentials = credentials)
+    flow = InstalledAppFlow.from_client_secrets_file('client_secrets.json', SCOPES)
+    credentials = flow.run_local_server(port=0)
+    return build('youtube', 'v3', credentials=credentials)
 
 def initialize_upload(youtube, options, MEDIA_FILE_PATH):
   tags = None
